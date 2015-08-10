@@ -1,3 +1,3 @@
-# ejemplo
+# SailsAngularExample
 
 a [Sails](http://sailsjs.org) application
