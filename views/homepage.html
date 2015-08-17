@@ -1,44 +1,6 @@
-{% extends 'layout.html' %}
 
+<!-- Home Template -->
 
-{% block body %}
+[{message}]
 
-    <div class="content" ng-app="com.test" ng-controller="UsersController as uC">
-        
-		<h1>Usuarios</h1>
-
-		<div ng-repeat="user in users">
-			<h2> <b>Name:</b> [{user.name}]</h2>
-			<h3> <b>Gender:</b> [{user.gender}]</h3>
-		</div>
-
-		<div>
-			
-			<h2>Nuevo Usuario</h2>
-
-			<form name="frmNewUser" novalidate>
-				
-				<input type="text" name="name" ng-model="data.name" placeholder="User Name">
-
-				<select name="gender" id="gender" ng-model="data.gender">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-				</select>
-
-				<button ng-click="saveUser()" >Save</button>
-
-			</form>
-
-		</div>
-
-
-    </div>
-
-{% endblock %}
-
-{% block js %}
-
-<script src="/js/controllers/usersController.js"></script>
-
-{% endblock %}
 

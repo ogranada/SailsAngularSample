@@ -1,17 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="com.test">
   <head>
     <title> {% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
     {% block css %}
     {% endblock %}
   </head>
 
-  <body>
+  <body ng-controller="HomeController">
+<!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Sails + Angular</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#/users"><i class="fa fa-shield"></i> Usuarios</a></li>
+                    <li><a href="#/cars"><i class="fa fa-comment"></i> Autos</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+
+            <!-- angular templating -->
+            <div ng-view></div>
+            <!-- this is where content will be injected -->
+
+        </div>
+
     {% block body %}
     {% endblock %}
 
-    <script src="/js/dependencies/angular.min.js"></script>
+    <script defer="true" src="/js/dependencies/angular.js"></script>
+    <script defer="true" src="/js/dependencies/angular-route.js"></script>
+    <script defer="true" src="/js/controllers/homeController.js"></script>
+    <script defer="true" src="/js/controllers/usersController.js"></script>
+    <script defer="true" src="/js/controllers/carsController.js"></script>
+    <script src="http://localhost:35729/livereload.js"></script>
     {% block js %}
     {% endblock %}
   </body>

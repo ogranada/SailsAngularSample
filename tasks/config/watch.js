@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 		api: {
 
 			// API files to watch:
-			files: ['api/**/*', '!**/node_modules/**']
+			files: ['api/**/*', 'config/**/*', '!**/node_modules/**']
 		},
 		assets: {
 
@@ -27,7 +27,14 @@ module.exports = function(grunt) {
 
 			// When assets are changed:
 			tasks: ['syncAssets' , 'linkAssets']
-		}
+		},
+        templates: {
+             files: ['views/**/*'],
+             tasks: ['compileAssets', 'linkAssetsBuild']
+        },
+        options: {
+          livereload: true,
+        },
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-watch');

@@ -1,11 +1,17 @@
 (function() {
-    
-    var app = angular.module("com.test", [], function ($interpolateProvider) {
+
+    var app;
+    if(!!window.angular_app){
+        app = window.angular_app;
+    } else {
+        app = angular.module("com.test", [], function ($interpolateProvider) {
             $interpolateProvider.startSymbol('[{');
             $interpolateProvider.endSymbol('}]');
         });
+    }
+
     app.controller("UsersController", ["$scope", "$http", function($scope, $http) {
-        
+
         $scope.data = {};
 
         var loadUsers = function() {
@@ -28,6 +34,7 @@
                 });
         };
 
+        loadUsers();
 
     }]);
 

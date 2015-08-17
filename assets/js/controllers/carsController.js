@@ -1,33 +1,40 @@
 (function() {
-    
-    var app = angular.module("com.test.car", [], function ($interpolateProvider) {
+
+    var app;
+    if(!!window.angular_app){
+        app = window.angular_app;
+    } else {
+        app = angular.module("com.test", [], function ($interpolateProvider) {
             $interpolateProvider.startSymbol('[{');
             $interpolateProvider.endSymbol('}]');
         });
+    }
+
     app.controller("CarsController", ["$scope", "$http", function($scope, $http) {
-        
+
         $scope.data = {};
 
-        var loadUsers = function() {
+        var loadCars = function() {
             $http.get("/car")
                 .success(function(data) {
                     $scope.users = data;
                 })
                 .error(function() {
-                    console.log("Error, no es posible descargar los datos de usuarios.")
+                    console.log("Error, no es posible descargar los datos de autos.")
                 });
         };
 
-        $scope.saveUser = function() {
+        $scope.saveCar = function() {
             $http.post("/car", $scope.data)
                 .success(function(data) {
-                    loadUsers();
+                    loadCars();
                 })
                 .error(function() {
-                    console.log("Error, no es posible almacenar el usuario.")
+                    console.log("Error, no es posible almacenar el auto.")
                 });
         };
 
+        loadCars();
 
     }]);
 

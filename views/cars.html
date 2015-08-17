@@ -1,0 +1,45 @@
+{# extends 'layout.html' #}
+
+
+{% block body %}
+
+    <div class="content">
+        
+        <h1> Autos </h1>
+
+		<div ng-repeat="user in users">
+            <h2> <b>Model:</b> [{user.model}]</h2>
+            <h3> <b>Type:</b> [{user.alimentation}]</h3>
+		</div>
+
+		<div>
+			
+			<h2>Nuevo Auto</h2>
+
+			<form name="frmNewCar" novalidate>
+				
+				<input type="text" name="model" ng-model="data.model" placeholder="Tesla-V8">
+
+				<select name="alimentation" id="alimentation" ng-model="data.alimentation">
+                    mplete_start_auto_complete)
+                    <option value="electric">Electrico</option>
+                    <option value="fuel">De combustible</option>
+				</select>
+
+				<button ng-click="saveCar()" >Save</button>
+
+			</form>
+
+		</div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="/js/controllers/usersController.js"></script>
+
+{% endblock %}
+
